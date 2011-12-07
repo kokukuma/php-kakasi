@@ -1,0 +1,7 @@
+#! /bin/sh
+#
+# Created by configure
+
+LDFLAGS='-L/usr/lib64/mysql' \
+'./configure' \
+"$@"

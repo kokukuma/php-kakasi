@@ -1,0 +1,8 @@
+kakasi.lo: /usr/local/share/php-5.3.8/ext/kakasi/kakasi.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/usr/local/share/php-5.3.8/ext/kakasi $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /usr/local/share/php-5.3.8/ext/kakasi/kakasi.c -o kakasi.lo 
+$(phplibdir)/kakasi.la: ./kakasi.la
+	$(LIBTOOL) --mode=install cp ./kakasi.la $(phplibdir)
+
+./kakasi.la: $(shared_objects_kakasi) $(KAKASI_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_kakasi) $(KAKASI_SHARED_LIBADD)
+

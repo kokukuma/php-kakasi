@@ -1,0 +1,13 @@
+// $Id$
+// vim:ft=javascript
+
+// If your extension references something external, use ARG_WITH
+// ARG_WITH("kakasi", "for kakasi support", "no");
+
+// Otherwise, use ARG_ENABLE
+// ARG_ENABLE("kakasi", "enable kakasi support", "no");
+
+if (PHP_KAKASI != "no") {
+	EXTENSION("kakasi", "kakasi.c");
+}
+
