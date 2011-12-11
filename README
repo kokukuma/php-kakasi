@@ -9,11 +9,9 @@ KAKASI Project : http://kakasi.namazu.org/index.html.ja
 Function overview
 -----------------
 
-kakasi-object has 1 member variable.
-word : This variable set some words in Japanese. 
-
-kakasi-object has 1 method.
-reproc : This method generate a wordset-object based on $word. 
+This program has 2 function.
+KAKASI_MORPHEME(string $word) :  This function generate a morpheme word arrray based on $word. 
+KAKASI_CONVERT(string $word)  :  This function generate a wordset-object based on the argument. 
 
 wordset-object has 4 member variable.
 base : original word
@@ -44,9 +42,24 @@ extension=kakasi.so
 Example usage 
 -------------
 
-$kakasi = new KAKASI();
-$kakasi->word = "狩野タツヤくん";
-$wordset = $kakasi->reproc();
++--- Japanese language morphological analysis 
+
+$wordset = KAKASI_MORPHEME("狩野達也君");
+var_dump($wordset);
+
+--->    array(3) {
+           [0]=>
+           string(6) "狩野"
+           [1]=>
+           string(6) "達也"
+           [2]=>
+           string(3) "君"
+
+
++--- Character conversion 
+
+$wordset = KAKASI_CONVERT("狩野タツヤくん"); 
+var_dump($wordset);
 
 --->	object(stdClass)#2 (4) {
 		  ["base"]=>
@@ -58,7 +71,6 @@ $wordset = $kakasi->reproc();
 		  ["alph"]=>
 		  string(14) "kanotatsuyakun"
 		}
-
 
 Author
 ------
